@@ -13,4 +13,10 @@ return [
         'regex'  => '\.ion\-([a-z0-9-]+):before{',
         'path'   => 'anomaly.field_type.icon::scss/ionicons/ionicons.scss',
     ],
+    'icomoon'    => [
+        'prefix' => 'ico icon-',
+        'name'   => 'IcoMoon',
+        'regex'  => '\.icon\-([a-z0-9-]+):before{',
+        'path'   => 'anomaly.field_type.icon::scss/icomoon/icomoon.scss',
+    ],
 ];
