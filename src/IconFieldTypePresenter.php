@@ -51,7 +51,7 @@ class IconFieldTypePresenter extends FieldTypePresenter
     public function icon(array $attributes = [])
     {
         $attributes['class'] = join(' ', array_filter([$this->object->getValue(), array_get($attributes, 'class')]));
-        
+
         $attributes = $this->html->attributes($attributes);
 
         return '<i ' . $attributes . '></i>';
