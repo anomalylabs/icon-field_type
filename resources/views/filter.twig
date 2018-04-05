@@ -6,20 +6,6 @@
 
     {% for value, title in field_type.options %}
         <option value="{{ value }}" {{ value == field_type.key ? 'selected' }}>
-            {{ ucwords(str_replace(['-', '_'], ' ', option)) }}
-        </option>
+            {{ ucwords(str_replace(['-', '_'], ' ', option)) }}</option>
     {% endfor %}
 </select>
-
-
-
-<div  role="treeitem" aria-selected="true">
-
-    500px
-
-</div>
-
-
-<div role="treeitem"><i class="fa fa-500px"></i>
-    500px
-</div>

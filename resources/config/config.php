@@ -12,6 +12,13 @@ return [
             ],
         ],
     ],
+    'icon_sets'     => [
+        'type'   => 'anomaly.field_type.checkboxes',
+        'config' => [
+            'default_value' => 'dropdown',
+            'handler'       => \Anomaly\IconFieldType\Support\Config\IconSetsHandler::class,
+        ],
+    ],
     'default_value' => [
         'type' => 'anomaly.field_type.text',
     ],
