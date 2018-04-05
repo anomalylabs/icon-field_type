@@ -1,0 +1,15 @@
+/* FONT PATH
+ * -------------------------- */
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('{{ asset_path("anomaly.field_type.icon::fonts/fontawesome/fontawesome-webfont.eot") }}');
+  src: url('{{ asset_path("anomaly.field_type.icon::fonts/fontawesome/fontawesome-webfont.eot") }}#iefix') format('embedded-opentype'),
+    url('{{ asset_path("anomaly.field_type.icon::fonts/fontawesome/fontawesome-webfont.woff2") }}') format('woff2'),
+    url('{{ asset_path("anomaly.field_type.icon::fonts/fontawesome/fontawesome-webfont.woff") }}') format('woff'),
+    url('{{ asset_path("anomaly.field_type.icon::fonts/fontawesome/fontawesome-webfont.ttf") }}') format('truetype'),
+    url('{{ asset_path("anomaly.field_type.icon::fonts/fontawesome/fontawesome-webfont.svg") }}#fontawesomeregular') format('svg');
+//  src: url('{{ asset_path("anomaly.field_type.icon::fonts/fontawesome/FontAwesome.otf') format") }}('opentype'); // used when developing fonts
+  font-weight: normal;
+  font-style: normal;
+}

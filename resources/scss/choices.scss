@@ -146,7 +146,7 @@ $choices-button-offset: 8px !default;
     padding-right: 4px;
     padding-left: 16px;
   }
-  .#{$choices-selector}__item { width: 100%; }
+  .#{$choices-selector}__item { width: 100%; i { width: 18px; } }
 }
 
 .#{$choices-selector}__list--multiple {
@@ -214,6 +214,7 @@ $choices-button-offset: 8px !default;
     padding: 10px;
     font-size: $choices-font-size-md;
     [dir="rtl"] & { text-align: right; }
+    i { width: 18px; }
   }
   .#{$choices-selector}__item--selectable {
     @media (min-width: 640px) {

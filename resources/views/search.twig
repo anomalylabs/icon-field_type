@@ -1,6 +1,7 @@
-{{ asset_add("styles.css", "anomaly.field_type.icon::scss/choices.scss") }}
-{{ asset_add("scripts.js", "anomaly.field_type.icon::js/choices.min.js") }}
-{{ asset_add("scripts.js", "anomaly.field_type.icon::js/search.js") }}
+{{ asset_add("styles.css", "anomaly.field_type.icon::scss/icons.scss", ["min"]) }}
+{{ asset_add("styles.css", "anomaly.field_type.icon::scss/choices.scss", ["min"]) }}
+{{ asset_add("scripts.js", "anomaly.field_type.icon::js/choices.min.js", ["min"]) }}
+{{ asset_add("scripts.js", "anomaly.field_type.icon::js/search.js", ["min"]) }}
 
 <select
         data-search
@@ -9,24 +10,18 @@
         {{ field_type.disabled ? 'disabled' }}
         {{ field_type.readonly ? 'readonly' }}>
 
-    {% if field_type.placeholder %}
-        <option value="">{{ trans(field_type.placeholder) }}</option>
-    {% endif %}
+    {#{% if field_type.placeholder %}#}
+        {#<option value="">{{ trans(field_type.placeholder) }}</option>#}
+    {#{% endif %}#}
 
     {% for value, option in field_type.options %}
-        {% if option is iterable %}
-            <optgroup label="{{ trans(value) }}">
-                {% for value, option in option %}
-                    <option value="fa fa-{{ option }}" {{ option == field_type.value ? 'selected' }}>
-                        {{ option }}
-                    </option>
-                {% endfor %}
-            </optgroup>
-        {% else %}
-            <option value="fa fa-{{ option }}" {{ option == field_type.key ? 'selected' }}>
-                {{ option }}
-            </option>
-        {% endif %}
+        <optgroup label="{{ trans(value) }}">
+            {% for value, option in option %}
+                <option value="{{ value }}" {{ value == field_type.value ? 'selected' }}>
+                    {{ ucwords(str_replace(['-', '_'], ' ', option)) }}
+                </option>
+            {% endfor %}
+        </optgroup>
     {% endfor %}
 
 </select>

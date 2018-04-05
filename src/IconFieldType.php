@@ -1,5 +1,6 @@
 <?php namespace Anomaly\IconFieldType;
 
+use Anomaly\IconFieldType\Command\ReadOptions;
 use Anomaly\IconFieldType\Handler\Countries;
 use Anomaly\IconFieldType\Handler\Currencies;
 use Anomaly\IconFieldType\Handler\Emails;
@@ -8,7 +9,6 @@ use Anomaly\IconFieldType\Handler\States;
 use Anomaly\IconFieldType\Handler\Timezones;
 use Anomaly\IconFieldType\Handler\Years;
 use Anomaly\Streams\Platform\Addon\FieldType\FieldType;
-use Anomaly\Streams\Platform\Asset\Asset;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 
 /**
@@ -45,6 +45,13 @@ class IconFieldType extends FieldType
     protected $filterView = 'anomaly.field_type.icon::filter';
 
     /**
+     * The icon options.
+     *
+     * @var array
+     */
+    protected $options = [];
+
+    /**
      * The field type config.
      *
      * @var array
@@ -52,25 +59,6 @@ class IconFieldType extends FieldType
     protected $config = [
         'mode' => 'dropdown',
     ];
-
-    /**
-     * Get the dropdown options.
-     *
-     * @return array
-     */
-    public function getOptions()
-    {
-        /* @var Asset $asset */
-        $asset = app(Asset::class);
-
-        $contents = file_get_contents(public_path($asset->path('anomaly.field_type.icon::css/fontawesome-all.min.css', ['noversion'])));
-
-        preg_match_all("/\.fa\-([a-z0-9-]+):before{/", $contents, $matches);
-
-        return [
-            'Font Awesome' => $matches[1]
-        ];
-    }
 
     /**
      * Get the placeholder.
@@ -114,5 +102,31 @@ class IconFieldType extends FieldType
         return $this->config('mode') == 'dropdown'
             ? 'custom-icon form-control'
             : null;
+    }
+
+    /**
+     * Get the dropdown options.
+     *
+     * @return array
+     */
+    public function getOptions()
+    {
+        $this->dispatch(new ReadOptions($this));
+
+        return $this->options;
+    }
+
+    /**
+     * Add options.
+     *
+     * @param       $set
+     * @param array $options
+     * @return $this
+     */
+    public function addOptions($set, array $options)
+    {
+        $this->options[$set] = $options;
+
+        return $this;
     }
 }
