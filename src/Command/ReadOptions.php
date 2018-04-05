@@ -35,6 +35,10 @@ class ReadOptions
     {
         $sets = $config->get($this->fieldType->getNamespace('icons'));
 
+        if ($available = $this->fieldType->config('icon_sets', [])) {
+            $sets = array_intersect_key($sets, array_flip($available));
+        }
+
         foreach ($sets as $set => $icons) {
 
             preg_match_all(
