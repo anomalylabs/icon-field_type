@@ -5,7 +5,7 @@ return [
         'required' => true,
         'type'     => 'anomaly.field_type.select',
         'config'   => [
-            'default_value' => 'dropdown',
+            'default_value' => 'search',
             'options'       => [
                 'dropdown' => 'anomaly.field_type.icon::config.mode.option.dropdown',
                 'search'   => 'anomaly.field_type.icon::config.mode.option.search',
