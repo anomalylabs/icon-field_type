@@ -149,6 +149,8 @@ $choices-button-offset: 8px !default;
   .#{$choices-selector}__item { width: 100%; i {
     width: 24px;
     font-size: 18px;
+    line-height: 16px;
+    display: inline-block;
     vertical-align: baseline;
   } }
 }
@@ -221,6 +223,8 @@ $choices-button-offset: 8px !default;
     i {
       width: 24px;
       font-size: 18px;
+      line-height: 16px;
+      display: inline-block;
       vertical-align: baseline;
     }
   }

@@ -18,7 +18,7 @@
         <optgroup label="{{ trans(value) }}">
             {% for value, option in option %}
                 <option value="{{ value }}" {{ value == field_type.value ? 'selected' }}>
-                    {{ ucwords(str_replace(['-', '_'], ' ', option)) }}
+                    {{ option }}
                 </option>
             {% endfor %}
         </optgroup>
