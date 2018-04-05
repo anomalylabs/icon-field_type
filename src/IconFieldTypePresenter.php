@@ -42,19 +42,29 @@ class IconFieldTypePresenter extends FieldTypePresenter
     }
 
     /**
-     * Return an icon.
+     * Return the icon html.
      *
      * @param       $class
      * @param array $attributes
      * @return string
      */
-    public function icon(array $attributes = [])
+    public function html(array $attributes = [])
     {
         $attributes['class'] = join(' ', array_filter([$this->object->getValue(), array_get($attributes, 'class')]));
 
         $attributes = $this->html->attributes($attributes);
 
         return '<i ' . $attributes . '></i>';
+    }
+
+    /**
+     * Return the icon HTML by default.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->html();
     }
 
 }
