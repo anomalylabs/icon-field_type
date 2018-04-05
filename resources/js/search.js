@@ -7,6 +7,7 @@
     fields.forEach(function (field) {
 
         new Choices(field, {
+            shouldSort: false,
             searchResultLimit: 10,
             callbackOnCreateTemplates: function (template) {
                 return {

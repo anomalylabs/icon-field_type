@@ -2,7 +2,8 @@
 
 use Anomaly\IconFieldType\IconFieldType;
 use Anomaly\Streams\Platform\Asset\Asset;
-use Illuminate\Contracts\Config\Repository;
+use Illuminate\Contracts\Cache\Repository as Cache;
+use Illuminate\Contracts\Config\Repository as Config;
 
 /**
  * Class ReadOptions
@@ -34,10 +35,12 @@ class ReadOptions
     /**
      * Handle the command.
      *
-     * @param Repository $config
-     * @param Asset      $asset
+     * @param Config $config
+     * @param Cache $cache
+     * @param Asset $asset
+     * @return
      */
-    public function handle(Repository $config, Asset $asset)
+    public function handle(Config $config, Cache $cache, Asset $asset)
     {
         $sets = $config->get($this->fieldType->getNamespace('icons'));
 
@@ -45,33 +48,40 @@ class ReadOptions
             $sets = array_intersect_key($sets, array_flip($available));
         }
 
-        foreach ($sets as $set => $icons) {
+        return $cache->remember(
+            md5(serialize($available)),
+            60 * 24 * 7,
+            function () use ($sets, $asset) {
 
-            preg_match_all(
-                "/{$icons['regex']}/",
-                file_get_contents(
-                    public_path(
-                        $asset->path(
-                            $icons['path'],
-                            ['noversion', 'min']
+                foreach ($sets as $set => $icons) {
+
+                    preg_match_all(
+                        "/{$icons['regex']}/",
+                        file_get_contents(
+                            public_path(
+                                $asset->path(
+                                    $icons['path'],
+                                    ['noversion', 'min']
+                                )
+                            )
+                        ),
+                        $matches
+                    );
+
+                    $this->fieldType->addOptions(
+                        $icons['name'],
+                        array_combine(
+                            array_map(
+                                function ($icon) use ($icons) {
+                                    return $icons['prefix'] . $icon;
+                                },
+                                $matches[1]
+                            ),
+                            $matches[1]
                         )
-                    )
-                ),
-                $matches
-            );
-
-            $this->fieldType->addOptions(
-                $icons['name'],
-                array_combine(
-                    array_map(
-                        function ($icon) use ($icons) {
-                            return $icons['prefix'] . $icon;
-                        },
-                        $matches[1]
-                    ),
-                    $matches[1]
-                )
-            );
-        }
+                    );
+                }
+            }
+        );
     }
 }
