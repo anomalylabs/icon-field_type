@@ -31,6 +31,12 @@ class ReadOptions
         $this->fieldType = $fieldType;
     }
 
+    /**
+     * Handle the command.
+     *
+     * @param Repository $config
+     * @param Asset      $asset
+     */
     public function handle(Repository $config, Asset $asset)
     {
         $sets = $config->get($this->fieldType->getNamespace('icons'));
