@@ -8,13 +8,17 @@
 
         new Choices(field, {
             shouldSort: false,
-            searchResultLimit: 10,
+            searchResultLimit: 20,
             callbackOnCreateTemplates: function (template) {
+
+                let  config = this.config;
+
                 return {
-                    item: function(classNames, data) {
+                    item: function(data) {
+
                         return template('\
                 <div\
-                  class="'+ String(classNames.item) + ' ' + String(data.highlighted ? classNames.highlightedState : classNames.itemSelectable) + '"\
+                  class="'+ String(config.classNames.item) + ' ' + String(data.highlighted ? config.classNames.highlightedState : config.classNames.itemSelectable) + '"\
                   data-item\
                   data-id="'+ String(data.id) + '"\
                   data-value="'+ String(data.value) + '"\
@@ -25,11 +29,12 @@
                 </div>\
               ');
                     },
-                    choice: function(classNames, data) {
+                    choice: function(data) {
+
                         return template('\
                 <div\
-                  class="'+ String(classNames.item) + ' ' + String(classNames.itemChoice) + ' ' + String(data.disabled ? classNames.itemDisabled : classNames.itemSelectable) + '"\
-                  data-select-text="'+ String(this.config.itemSelectText) + '"\
+                  class="'+ String(config.classNames.item) + ' ' + String(config.classNames.itemChoice) + ' ' + String(data.disabled ? config.classNames.itemDisabled : config.classNames.itemSelectable) + '"\
+                  data-select-text="'+ String(config.itemSelectText) + '"\
                   data-choice \
                   '+ String(data.disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable') + '\
                   data-id="'+ String(data.id) + '"\
