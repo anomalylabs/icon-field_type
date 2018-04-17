@@ -10,9 +10,9 @@
         {{ field_type.disabled ? 'disabled' }}
         {{ field_type.readonly ? 'readonly' }}>
 
-    {#{% if field_type.placeholder %}#}
-        {#<option value="">{{ trans(field_type.placeholder) }}</option>#}
-    {#{% endif %}#}
+    {% if field_type.placeholder %}
+        <option value="">{{ trans(field_type.placeholder) }}</option>
+    {% endif %}
 
     {% for value, option in field_type.options %}
         <optgroup label="{{ trans(value) }}">
