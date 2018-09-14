@@ -11,7 +11,6 @@
             placeholder: true,
             searchResultLimit: 20,
             removeItemButton: true,
-            //placeholderValue: 'Test',
             callbackOnCreateTemplates: function (template) {
 
                 let config = this.config;
