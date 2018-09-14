@@ -9,6 +9,7 @@
         new Choices(field, {
             shouldSort: false,
             searchResultLimit: 20,
+            removeItemButton: true,
             callbackOnCreateTemplates: function (template) {
 
                 let  config = this.config;
