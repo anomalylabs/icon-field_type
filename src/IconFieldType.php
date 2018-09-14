@@ -57,7 +57,9 @@ class IconFieldType extends FieldType
      * @var array
      */
     protected $config = [
-        'icon_sets' => [],
+        'icon_sets' => [
+            'fontawesome',
+        ],
         'mode'      => 'search',
     ];
 
