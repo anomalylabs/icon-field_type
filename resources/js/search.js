@@ -26,6 +26,7 @@
                   '+ String(data.disabled ? 'aria-disabled="true"' : '') + '\
                   >\
                   <i class="' + data.value + '"></i> ' + String(data.label) + '\
+                  <button type="button" class="choices__button" data-button="">Remove item</button>\
                 </div>\
               ');
                     },
