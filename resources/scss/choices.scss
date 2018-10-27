@@ -9,7 +9,7 @@ $choices-font-size-sm: 12px !default;
 $choices-guttering: 0.5rem !default;
 $choices-border-radius: .1rem !default;
 $choices-border-radius-item: .1rem !default;
-$choices-bg-color: $input-bg !default;
+$choices-bg-color: #ffffff !default;
 $choices-bg-color-disabled: #eceeef !default;
 $choices-bg-color-dropdown: #FFFFFF !default;
 $choices-text-color: #55595c !default;
@@ -49,7 +49,7 @@ $choices-button-offset: 8px !default;
     margin: 0;
   }
   .#{$choices-selector}__button {
-    background-image: url('{{ img("anomaly.field_type.icon::img/cross-inverse.svg").path }}');
+    background-image: url('{{ img("pyrocms.theme.accelerant::img/choices/cross-inverse.svg").path }}');
     padding: 0;
     background-size: 8px;
     height: 100%;
@@ -107,7 +107,7 @@ $choices-button-offset: 8px !default;
     margin-left: $choices-button-offset;
     padding-left: $choices-button-offset*2;
     border-left: 1px solid darken($choices-primary-color, 10%);
-    background-image: url('{{ img("anomaly.field_type.icon::img/cross-inverse.svg").path }}');
+    background-image: url('{{ img("anomaly.field_type.checkboxes::img/cross.svg").path }}');
     background-size: $choices-button-dimension;
     width: $choices-button-dimension;
     line-height: 1;
