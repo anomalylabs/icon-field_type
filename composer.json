@@ -9,6 +9,9 @@
     ],
     "homepage": "http://pyrocms.com/",
     "license": "MIT",
+    "assets": {
+        "icon": "marketplace/icon.png"
+    },
     "authors": [
         {
             "name": "PyroCMS, Inc.",
