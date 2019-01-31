@@ -10,7 +10,11 @@
     "homepage": "http://pyrocms.com/",
     "license": "MIT",
     "assets": {
-        "icon": "marketplace/icon.png"
+        "icon": "marketplace/icon.png",
+        "banner": "marketplace/banner.png",
+        "screenshots": [
+            "marketplace/screenshot-1.png"
+        ]
     },
     "authors": [
         {
