@@ -11,7 +11,7 @@
     "license": "MIT",
     "assets": {
         "icon": "marketplace/icon.png",
-        "banner": "marketplace/banner.png",
+        "banner": "marketplace/banner.jpg",
         "screenshots": [
             "marketplace/screenshot-1.png"
         ]
