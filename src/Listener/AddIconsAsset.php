@@ -3,6 +3,13 @@
 use Anomaly\Streams\Platform\Asset\Asset;
 use Illuminate\Http\Request;
 
+/**
+ * Class AddIconsAsset
+ *
+ * @link   http://pyrocms.com/
+ * @author PyroCMS, Inc. <support@pyrocms.com>
+ * @author Ryan Thompson <ryan@pyrocms.com>
+ */
 class AddIconsAsset
 {
 
