@@ -12,6 +12,9 @@ let mix = require('laravel-mix');
  */
 
 mix
+    .sass('resources/scss/fontawesome/font-awesome.scss', 'resources/css')
+    .sass('resources/scss/ionicons/ionicons.scss', 'resources/css')
+    .sass('resources/scss/icomoon/icomoon.scss', 'resources/css')
     .copy('node_modules/choices/choices.js', 'resources/js')
     .sass('resources/scss/choices.scss', 'resources/css')
     .sass('resources/scss/icons.scss', 'resources/css')
