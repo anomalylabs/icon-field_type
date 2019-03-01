@@ -41,6 +41,6 @@ class AddIconsAsset
             return;
         }
 
-        $this->asset->add('styles.css', 'anomaly.field_type.icon::scss/icons.scss');
+        $this->asset->add('styles.css', 'anomaly.field_type.icon::css/icons.css');
     }
 }
