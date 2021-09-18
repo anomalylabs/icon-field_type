@@ -1,8 +1,8 @@
-<?php namespace Anomaly\IconFieldType;
+<?php
 
-use Anomaly\IconFieldType\Listener\AddIconsAsset;
+namespace Anomaly\IconFieldType;
+
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
-use Anomaly\Streams\Platform\Event\Ready;
 
 /**
  * Class IconFieldTypeServiceProvider
@@ -13,15 +13,4 @@ use Anomaly\Streams\Platform\Event\Ready;
  */
 class IconFieldTypeServiceProvider extends AddonServiceProvider
 {
-
-    /**
-     * The addon listeners.
-     *
-     * @var array
-     */
-    protected $listeners = [
-        Ready::class => [
-            AddIconsAsset::class,
-        ],
-    ];
 }
