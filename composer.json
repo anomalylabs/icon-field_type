@@ -33,6 +33,9 @@
     "support": {
         "email": "support@pyrocms.com"
     },
+    "require": {
+        "anomaly/streams-platform": "^1.8"
+    },
     "autoload": {
         "psr-4": {
             "Anomaly\\IconFieldType\\": "src/"

@@ -114,7 +114,7 @@ class IconFieldType extends FieldType
      */
     public function getOptions()
     {
-        $this->dispatch(new ReadOptions($this));
+        $this->dispatchSync(new ReadOptions($this));
 
         return $this->options;
     }
