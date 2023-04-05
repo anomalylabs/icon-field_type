@@ -9,7 +9,6 @@ use Anomaly\IconFieldType\Handler\States;
 use Anomaly\IconFieldType\Handler\Timezones;
 use Anomaly\IconFieldType\Handler\Years;
 use Anomaly\Streams\Platform\Addon\FieldType\FieldType;
-use Illuminate\Foundation\Bus\DispatchesJobs;
 
 /**
  * Class IconFieldType
@@ -20,9 +19,6 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
  */
 class IconFieldType extends FieldType
 {
-
-    use DispatchesJobs;
-
     /**
      * No default class.
      *
@@ -114,7 +110,7 @@ class IconFieldType extends FieldType
      */
     public function getOptions()
     {
-        $this->dispatchSync(new ReadOptions($this));
+        dispatch_sync(new ReadOptions($this));
 
         return $this->options;
     }
