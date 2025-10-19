@@ -1,7 +1,7 @@
 <?php namespace Anomaly\IconFieldType;
 
 use Anomaly\Streams\Platform\Addon\FieldType\FieldTypePresenter;
-use Collective\Html\HtmlBuilder;
+use Anomaly\Streams\Platform\Html\HtmlBuilder;
 
 /**
  * Class IconFieldTypePresenter
