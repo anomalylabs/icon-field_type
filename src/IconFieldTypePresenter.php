@@ -42,6 +42,16 @@ class IconFieldTypePresenter extends FieldTypePresenter
     }
 
     /**
+     * Return the selection key.
+     *
+     * @return string|null
+     */
+    public function key()
+    {
+        return $this->object->getValue();
+    }
+
+    /**
      * Return the icon html.
      *
      * @param       $class
