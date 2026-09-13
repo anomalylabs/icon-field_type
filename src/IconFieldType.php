@@ -1,13 +1,6 @@
 <?php namespace Anomaly\IconFieldType;
 
 use Anomaly\IconFieldType\Command\ReadOptions;
-use Anomaly\IconFieldType\Handler\Countries;
-use Anomaly\IconFieldType\Handler\Currencies;
-use Anomaly\IconFieldType\Handler\Emails;
-use Anomaly\IconFieldType\Handler\Layouts;
-use Anomaly\IconFieldType\Handler\States;
-use Anomaly\IconFieldType\Handler\Timezones;
-use Anomaly\IconFieldType\Handler\Years;
 use Anomaly\IconFieldType\Validation\ValidateIcon;
 use Anomaly\Streams\Platform\Addon\FieldType\FieldType;
 
