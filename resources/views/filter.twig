@@ -4,8 +4,12 @@
 
     <option value="">{{ trans(field_type.placeholder) }}</option>
 
-    {% for value, title in field_type.options %}
-        <option value="{{ value }}" {{ value == field_type.key ? 'selected' }}>
-            {{ ucwords(str_replace(['-', '_'], ' ', option)) }}</option>
+    {% for set, icons in field_type.options %}
+        <optgroup label="{{ trans(set) }}">
+            {% for value, title in icons %}
+                <option value="{{ value }}" {{ value == field_type.key ? 'selected' }}>
+                    {{ ucwords(str_replace(['-', '_'], ' ', title)) }}</option>
+            {% endfor %}
+        </optgroup>
     {% endfor %}
 </select>
