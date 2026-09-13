@@ -48,40 +48,49 @@ class ReadOptions
             $sets = array_intersect_key($sets, array_flip($available));
         }
 
-        return $cache->remember(
-            md5(serialize($available)),
-            60 * 24 * 7,
+        $options = $cache->remember(
+            $this->fieldType->getNamespace('options.' . md5(serialize($sets))),
+            60 * 60 * 24 * 7,
             function () use ($sets, $asset) {
 
-                foreach ($sets as $set => $icons) {
+                $options = [];
+
+                foreach ($sets as $icons) {
+
+                    $path = public_path(
+                        $asset->path(
+                            $icons['path'],
+                            ['noversion', 'min']
+                        )
+                    );
+
+                    if (!is_file($path)) {
+                        continue;
+                    }
 
                     preg_match_all(
                         "/{$icons['regex']}/",
-                        file_get_contents(
-                            public_path(
-                                $asset->path(
-                                    $icons['path'],
-                                    ['noversion', 'min']
-                                )
-                            )
-                        ),
+                        file_get_contents($path),
                         $matches
                     );
 
-                    $this->fieldType->addOptions(
-                        $icons['name'],
-                        array_combine(
-                            array_map(
-                                function ($icon) use ($icons) {
-                                    return $icons['prefix'] . $icon;
-                                },
-                                $matches[1]
-                            ),
+                    $options[$icons['name']] = array_combine(
+                        array_map(
+                            function ($icon) use ($icons) {
+                                return $icons['prefix'] . $icon;
+                            },
                             $matches[1]
-                        )
+                        ),
+                        $matches[1]
                     );
                 }
+
+                return $options;
             }
         );
+
+        foreach ($options as $set => $icons) {
+            $this->fieldType->addOptions($set, $icons);
+        }
     }
 }
