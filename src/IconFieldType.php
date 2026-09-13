@@ -8,6 +8,7 @@ use Anomaly\IconFieldType\Handler\Layouts;
 use Anomaly\IconFieldType\Handler\States;
 use Anomaly\IconFieldType\Handler\Timezones;
 use Anomaly\IconFieldType\Handler\Years;
+use Anomaly\IconFieldType\Validation\ValidateIcon;
 use Anomaly\Streams\Platform\Addon\FieldType\FieldType;
 
 /**
@@ -46,6 +47,27 @@ class IconFieldType extends FieldType
      * @var array
      */
     protected $options = [];
+
+    /**
+     * The validation rules.
+     *
+     * @var array
+     */
+    protected $rules = [
+        'valid_icon',
+    ];
+
+    /**
+     * The custom validators.
+     *
+     * @var array
+     */
+    protected $validators = [
+        'valid_icon' => [
+            'handler' => ValidateIcon::class,
+            'message' => 'anomaly.field_type.icon::message.invalid_icon',
+        ],
+    ];
 
     /**
      * The field type config.
